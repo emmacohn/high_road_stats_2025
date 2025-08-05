@@ -1,10 +1,3 @@
-# load CPI data from realtalk
-# pulling in CPI-U-RS series, and also saving a copy to share
-cpi_data <- realtalk::cpi_u_rs_annual
-
-# set base year to 2024
-cpi2024 <- cpi_data$cpi_u_rs[cpi_data$year==2024]
-
 #load in CPS ORG data
 cps_org <- load_cps("org", 1979:2024, year, orgwgt, wage, statefips, female, wbho, age, selfemp, emp, selfinc, cow1) %>%
   # standard labor force and age restrictions, restrict to only Wisconsin (statefips code = 55)
