@@ -1,7 +1,7 @@
 #load in CPS ORG data
 cps_org <- load_cps("org", 1979:2024, year, orgwgt, wage, statefips, female, wbho, age, selfemp, emp, selfinc, cow1) %>%
   # standard labor force and age restrictions, restrict to only Wisconsin (statefips code = 55)
-  filter(age >= 16, emp == 1, 
+  filter(age >= 16, emp == 1, statefips == 55,
          case_when(year < 1989 ~ selfemp == 0,
                    year >= 1989 & year < 1994 ~ selfemp == 0 | selfinc == 0,
                    TRUE ~ cow1 <= 5)) %>% 
