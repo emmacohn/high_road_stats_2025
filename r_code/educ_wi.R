@@ -21,9 +21,6 @@ wages_sing_assoc <- cps_org |>
         n=n(),
         .by=c(educat, year))
 
-wb$add_worksheet(sheet = "wages_sing_assoc") $
-  add_data(x = wages_sing_assoc)
-
 #find median wages by two category Associate degree
 wages_two_assoc <- cps_org |> 
   mutate(educat = case_when(gradeatn %in% c(1,2,3,4,5,6,7,8) ~ "No HS diploma",
@@ -41,6 +38,7 @@ wages_two_assoc <- cps_org |>
         n=n(),
         .by=c(educat, year))
 
-wb$add_worksheet(sheet = "wages_two_assoc") $
-  add_data(x = wages_two_assoc)
+wb$add_worksheet(sheet = "Education median wages") $
+  add_data(x = wages_sing_assoc, start_col = 1) $
+  add_data(x = wages_two_assoc, start_col = 8)
 
