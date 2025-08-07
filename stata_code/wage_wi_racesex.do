@@ -50,7 +50,7 @@ sum cpiurs if year == `cpibase'
 local cpi_base = `r(mean)'
 gen realwage = wage * `cpi_base'/cpiurs
 
-*save /tmp/statewages_wi.dta, replace
+/*save /tmp/statewages_wi.dta, replace
 tempfile statewages_wi
 save `statewages_wi'
 
