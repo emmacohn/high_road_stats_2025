@@ -1,6 +1,6 @@
 cps_org <- load_cps("org", 2019:2024, year, orgwgt, wage, statefips, female, wbho, age, selfemp, emp, selfinc, cow1, educ, gradeatn) %>%
   # standard labor force and age restrictions, restrict to only Wisconsin (statefips code = 55)
-  filter(age>=16, emp == 1, selfemp !=1, selfinc !=1, statefips == 55) %>% 
+  filter(age>=16, selfemp !=1, selfinc !=1, statefips == 55) %>% 
     left_join(cpi_data, by='year') %>%
   # inflation adjust wages to 2024$
   mutate(realwage = wage * (cpi2024/cpi_u_rs))
